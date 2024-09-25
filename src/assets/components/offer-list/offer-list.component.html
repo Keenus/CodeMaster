@@ -3,10 +3,10 @@
     Choose your offer
   </h1>
 </div>
-<div class="w-full py-2 flex flex-wrap items-center justify-center gap-5">
+<div class="w-full py-2 flex flex-wrap items-center justify-center gap-5 py-3">
   @for (offer of offers; track offer) {
     <div class="card py-1 px-2 rounded border text-center max-w-60 flex flex-col gap-2">
-      <h2 class="py-1">
+      <h2 class="py-1 text-lg">
         {{ offer?.name }}
       </h2>
       <div class="body flex justify-center items-center py-1 ">

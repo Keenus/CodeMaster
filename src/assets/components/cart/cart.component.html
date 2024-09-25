@@ -1,38 +1,42 @@
 @if (offerService.selectedOfferSubject()) {
   <ng-container>
-    <div class="flex flex-col items-center justify-center py-3">
-      <h2 class="text-center text-xl py-3">
-        You choose
-        <span class="text-blue-500 underline">
+    <section class="flex justify-center">
+      <div class="flex flex-col justify-center py-3">
+        <h2 class="text-xl py-3">
+          You choose
+          <span class="text-blue-500 underline">
           {{ offerService.selectedOfferSubject()?.name }}
         </span>
-        , cost:
-        <span class="text-blue-500 underline">
+          , cost:
+          <span class="text-blue-500 underline">
           {{ offerService.selectedOfferSubject()?.value + configService.selectedCurrency().short }}
         </span>
-      </h2>
-      <div class="options flex flex-col gap-3 items-start min-w-60">
-        <p class="text-lg">Additional options:</p>
-        @for (option of additionalOptions; track $index) {
-          <div class="flex items-center gap-3">
-            <input type="checkbox" id="option-{{ option.id }}" name="option-{{ option.id }}" value="{{ option }}"
-              (change)="offerService.toggleOption(option, $event)"
-            />
-            <label for="option-{{ option.id }}">
-              {{ option.name }}
-              <span class="text-sm">
+        </h2>
+        <div class="options flex flex-col gap-3 items-start min-w-60 pl-5">
+          <p class="text-lg">Additional options:</p>
+          @for (option of additionalOptions; track $index) {
+            <div class="flex items-center gap-3 pl-2">
+              <input type="checkbox" id="option-{{ option.id }}" name="option-{{ option.id }}" value="{{ option }}"
+                     (change)="offerService.toggleOption(option, $event)"
+              />
+              <label for="option-{{ option.id }}">
+                {{ option.name }}
+                <span class="text-sm">
                 ( {{ option.value * configService.selectedCurrency().value }} {{ configService.selectedCurrency().short }} )
               </span>
-            </label>
-          </div>
-        }
-        <p class="text-xl mt-3">
-          Final cost:
-          <span class="text-blue-500 underline">
+              </label>
+            </div>
+          }
+        </div>
+        <div>
+          <p class="text-xl mt-3">
+            Final cost:
+            <span class="text-blue-500 underline">
             {{ offerService.finalValue() + configService.selectedCurrency().short }}
           </span>
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   </ng-container>
 }
