@@ -1,0 +1,22 @@
+@if (offerService.selectedOfferSubject()) {
+  <ng-container>
+    <div class="flex flex-col items-center justify-center">
+      <p class=" text-center text-xl py-3">
+        You choose {{ offerService.selectedOfferSubject()?.name }}, cost
+      </p>
+      <div class="options flex flex-col gap-3 items-start min-w-60">
+        @for (option of additionalOptions; track $index) {
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="option-{{ option.id }}" name="option-{{ option.id }}" value="{{ option }}" />
+            <label for="option-{{ option.id }}">
+              {{ option.name }}
+              <span class="text-sm">
+                ( {{ option.value * configService.selectedCurrency().value }} {{ configService.selectedCurrency().short }} )
+              </span>
+            </label>
+          </div>
+        }
+      </div>
+    </div>
+  </ng-container>
+}
