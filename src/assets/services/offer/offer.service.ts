@@ -1,4 +1,5 @@
 import {Injectable, signal, WritableSignal} from '@angular/core';
+import {AdditionalOption} from "../../components/cart/cart.component";
 
 export type Offer = { name: string, img: string, value: number, desc: string } | null;
 
@@ -19,4 +20,9 @@ export class OfferService{
     selectedOfferValue ? this.finalValue.set(selectedOfferValue) : this.finalValue.set(0);
   }
 
+  toggleOption(option: AdditionalOption, event: Event) {
+    let isChecked = (event.target as HTMLInputElement).checked;
+    let currentValue = this.finalValue();
+    isChecked ? this.finalValue.set(currentValue + option.value) : this.finalValue.set(currentValue - option.value);
+  }
 }

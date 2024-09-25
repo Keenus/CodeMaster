@@ -16,10 +16,9 @@
         {{ offer?.desc }}
       </p>
       <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline self-center"
+          [class]="offerService.selectedOfferSubject() === offer ? 'bg-green-500 hover:bg-green-700': 'bg-blue-500'"
           (click)="chooseOffer(offer)">
-        <span [textContent]="offerService.selectedOfferSubject() === offer ? 'Selected' : 'Choose'">
-
-        </span>
+        <span [textContent]="offerService.selectedOfferSubject() === offer ? 'Selected' : 'Choose'"></span>
       </button>
     </div>
   }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ConfigService} from "../../services/config/config.service";
 import {Offer, OfferService} from "../../services/offer/offer.service";
+import {MatLabel} from "@angular/material/form-field";
 
 export type AdditionalOption = {
   id: number,
@@ -11,7 +12,9 @@ export type AdditionalOption = {
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [
+    MatLabel
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

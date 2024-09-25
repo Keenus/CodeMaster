@@ -21,6 +21,6 @@ export class ConfigService {
   public selectedCurrency: WritableSignal<Currency> = signal(this.currencyOptions[0]);
 
   constructor() {
-    this.selectedCurrency.set(this.currencyOptions[0]);
+    this.selectedCurrency.set(this.currencyOptions[1]);
   }
 }
